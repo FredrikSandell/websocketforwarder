@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+    sampleservice:
+        build:
+            context: sample
+            dockerfile: Dockerfile
+        restart: always
+        links:
+            - "rabbitmq:mq"
+    rabbitmq:
+        image: rabbitmq:3-management
+        hostname: rabbit1
+        ports:
+            - 5672:5672
+            - 15672:15672
